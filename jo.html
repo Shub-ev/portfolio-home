@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation Example with GSAP</title>
+    <style>
+        body {
+            height: 200vh; /* Create enough scrolling space */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(50px); /* Adjust this value */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+    
+    <script>
+        // Function to handle the intersection observer callback
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element has entered the viewport
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once animation is triggered
+                }
+            });
+        }
+
+        // Create an observer instance
+        const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
+
+        // Target the element to be animated
+        const targetElement = document.querySelector('.container');
+
+        // Start observing the target element
+        observer.observe(targetElement);
+    </script>
+</body>
+</html>

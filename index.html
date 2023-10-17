@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=EB+Garamond:ital@1&family=Fuggles&family=Great+Vibes&family=Lobster&family=Montserrat:wght@200;600&family=Poppins&family=Young+Serif&family=Yuji+Hentaigana+Akari&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="home">
+        <div class="navbar dis">
+            <div class="logo">SG</div>
+            <div class="nav-options">
+                <ul class="options" id="navbar">
+                    <li class="option" id="about"><p><p class="option-no">01.</p>&nbsp;About</p></li>
+                    <li class="option" id="experiance"><p><p class="option-no">02.</p>&nbsp;Experience</p></li>
+                    <li class="option" id="contact"><p><p class="option-no">03.</p>&nbsp;Contact</p></li>
+                    <li class="option"><p class="resume-option">Resume</p></li>
+                    <li class="option" id="scroll-up">^</li>
+                </ul>
+            </div>
+            <button id="nav-button"></button>
+        </div>
+
+        <div class="intro dis">
+            <div class="small">Hi,&nbsp; my&nbsp; name&nbsp; is</div>
+            <div class="name">Shubham Gharage.</div>
+            <div class="intro-dec">I build things for the web</div>
+            <div class="describe">
+                I'm a passionate web developer with a strong foundation in HTML, CSS, and JavaScript. I thrive on problem-solving and creating visually appealing, user-friendly websites. My commitment to staying updated with industry trends drives me to craft elegant solutions that bridge innovation with practicality, making the web a better place for all users.
+            </div>
+            <div class="check-profile">Check out my profile!</div>
+        </div>
+    </div>
+
+    <div class="about" id="about-section">
+            <div class="column1">
+                <div class="anime">
+                    <p class="about-title" id="webdeveloper-title">&lt;Web Developer/></p>
+                    <div class="underline" id="underline-id"></div>
+                </div>
+                <p class="describe-about" id="about-describe">I'm a MERN developer skilled in MongoDB, Express.js, React, and Node.js. Proficient in HTML and CSS, I craft responsive interfaces and stay updated with tech trends. My strengths include clean, scalable code and seamless front-to-back-end integration. I'm passionate about contributing to innovative web projects.</p>
+                <div class="logo-marquee">
+                    <img src="react.png" alt="Logo 1" class="logo-about1">
+                    <img src="mongodb.png" alt="Logo 2" class="logo-about2">
+                    <img src="css.png" alt="" class="logo-about3">
+                    <img src="html.png" alt="" class="logo-about4">
+                    <img src="bootstrap.png" alt="" class="logo-about5">
+                    <img src="js.png" alt="" class="logo-about6">
+                    <img src="wordpress.png" alt="" class="logo-about7">
+                    <img src="figma.png" alt="" class="logo-about8">
+                    <img src="php.png" alt="" class="logo-about9" id="img-remove">
+                </div>
+            </div>
+    </div>
+
+    <div class="experiance" id="experiance-section">
+        <div class="exp-title" id="experiance-title">Experiences</div>
+        <div class="projects" id="projects-id">
+            <div class="project todo">
+                <p class="project-title">Todo List Using React and MongoDB</p>
+                <p class="project-des">Experience seamless task management with our React-based ToDo List application. With the power of React and routing, you can organize your tasks efficiently. Our Node.js and Express.js server, backed by MongoDB, ensures your tasks are securely stored and accessible from any device, wherever you are. Simplify your productivity and stay on top of your to-do list with ease.</p>
+            </div>
+            <div class="project weather-api">
+                <p class="project-title">Weather App Using React and Weather API</p>
+                <p class="project-des">Get real-time weather updates at your fingertips with our React-powered Weather App. It connects seamlessly with a weather API, providing you with precise and up-to-the-minute weather details. Stay informed about current weather conditions effortlessly, making your daily plans a breeze.</p>
+            </div>
+            <div class="project underdevelop">
+                <p class="project-title">UnderDevelopment</p>
+                <p class="project-des">Working on new projects and expanding my knowledge.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact" id="contact-section">
+        <div class="contact-title">Let's Connect</div>
+        <div class="form">
+            <div class="right-title">Contact Form</div>
+                <div class="input">
+                    <input type="text" class="name-in form-input" placeholder="Name">
+                    <input type="email" class="email-in form-input" placeholder="Email">
+                    <input type="text" class="pass-in form-input" placeholder="Message">
+                </div>
+            <button class="submit-form" type="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        /*This is the code for drop-bar*/
+        const nav_button = document.getElementById('nav-button');
+        const navbar = document.querySelector('.options'); // Change to target the menu container directly
+        const scroll_up = document.getElementById('scroll-up');
+
+        nav_button.addEventListener('click', () => {
+            if (navbar.style.top === '' || navbar.style.top === '-50vh') {
+                navbar.style.top = '0vh';
+            } else {
+                navbar.style.top = '-50vh';
+            }
+        });
+
+        scroll_up.addEventListener('click', () => {
+            if (navbar.style.top === '0vh') {
+                navbar.style.top = '-50vh';
+            }
+        });
+        /*This is the code for drop-bar*/
+
+
+        /*This is the code for handling the laoding of the first view*/
+        function handleIntersection1(entries, observer1){
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element has entered the viewport
+                    entry.target.style.opacity = '1';
+                    observer1.unobserve(entry.target); // Stop observing once animation is triggered
+                }
+            })
+        }
+
+        const elements = document.querySelectorAll('.dis');
+        const observer1 = new IntersectionObserver( handleIntersection1, {threshold : 0.4})
+
+        elements.forEach(element => {
+            observer1.observe(element);
+        })
+        /*This is the code for handling the laoding of the first view*/
+
+        /*This is the code for webdeveloper title*/
+        function handleIntersection2(entries, observer2) {
+            entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                if(entry.target.id === 'webdeveloper-title'){
+                    // Element has entered the viewport
+                    entry.target.classList.add('animate-title');
+                    observer2.unobserve(entry.target); // Stop observing once animation is triggered
+                }
+                else if(entry.target.id === 'underline-id'){
+                    // Element has entered the viewport
+                    setTimeout(() => {
+                            entry.target.style.marginRight = '0vw';
+                    },2100)
+                    entry.target.classList.add('animate-underline');
+                    observer2.unobserve(entry.target); // Stop observing once animation is triggered
+                }
+                else{
+                    entry.target.classList.add('animate-about-describe');
+                    observer2.unobserve(entry.target); // Stop observing once animation is triggered
+                }
+            }
+            });
+        }
+
+        const about_title = document.getElementById('webdeveloper-title');
+        const underline = document.getElementById('underline-id');
+        const about_describe = document.getElementById('about-describe');
+        const elements1 = [about_title, underline, about_describe];
+        const observer2 = new IntersectionObserver(handleIntersection2, { threshold: 0.4 });
+
+        elements1.forEach((element) => {
+            observer2.observe(element);
+        });
+        /*This is the code for webdeveloper title*/
+
+        /*This is the code for experiance part*/
+        function handleIntersection3(entries, observer3) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+            if (entry.target.id === 'experiance-title') {
+                entry.target.classList.add('experiance-title-animation');
+                observer3.unobserve(entry.target);
+            } else if (entry.target.id === 'projects-id') {
+                // Check the screen width and set different heights
+                setTimeout(() =>{
+                    if (window.innerWidth >= 1200 && window.innerWidth <= 1800) {
+                    entry.target.style.height = '59vh'; // Set your height value for 550px to 700px here
+                    }
+                    else if (window.innerWidth >= 938 && window.innerWidth <= 1200) {
+                    entry.target.style.height = '66vh'; // Set your height value for 550px to 700px here
+                    }
+                    else if (window.innerWidth >= 650 && window.innerWidth <= 938) {
+                    entry.target.style.height = '75vh'; // Set your height value for 550px to 700px here
+                    }
+                    else if (window.innerWidth >= 550 && window.innerWidth <= 650) {
+                    entry.target.style.height = '78vh'; // Set your height value for 550px to 700px here
+                    }
+                    else if (window.innerWidth >= 0 && window.innerWidth <= 650) {
+                        console.log("In correct media");
+                    entry.target.style.height = '79vh'; // Set your height value for 550px to 700px here
+                    } 
+                    else {
+                    entry.target.style.height = '55.7vh'; // Set your default height for other screen widths here
+                    }
+                }, 2000);
+
+                entry.target.classList.add('projects-animations');
+                observer3.unobserve(entry.target);
+            }
+            }
+        });
+        }
+
+        const experiance_title = document.getElementById('experiance-title');
+        const projects = document.getElementById('projects-id');
+        const elements2 = [experiance_title, projects];
+        const observer3 = new IntersectionObserver(handleIntersection3, { threshold: 0.4 });
+
+        elements2.forEach((element) => {
+        observer3.observe(element);
+        });
+        /*This is the code for experiance part*/
+
+
+        /*Code for scroll down*/
+        // Get references to the navigation options
+        const aboutOption = document.getElementById('about');
+        const experienceOption = document.getElementById('experiance');
+        const contactOption = document.getElementById('contact');
+
+        // Define a function to scroll to a specific section
+        function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            navbar.style.top = '-50vh';
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+        }
+
+        // Add click event listeners to the navigation options
+        aboutOption.addEventListener('click', () => {
+        scrollToSection('about-section'); // Replace 'about' with the actual id of your 'About' section
+        });
+
+        experienceOption.addEventListener('click', () => {
+        scrollToSection('experiance-section'); // Replace 'experience' with the actual id of your 'Experience' section
+        });
+
+        contactOption.addEventListener('click', () => {
+        scrollToSection('contact-section'); // Replace 'contact' with the actual id of your 'Contact' section
+        });
+        /*Code for scroll down*/
+    </script>
+</body>
+</html>
